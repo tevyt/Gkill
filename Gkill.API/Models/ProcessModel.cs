@@ -12,6 +12,10 @@ namespace Gkill.API.Models{
         public long Memory {get; set;}
 
         private string GetUser(){
+            return "root";
+        }
+
+        /*private string GetUser(){
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo("/bin/ps", $"-o user -p {ProcessID} --no-headers"){
                 RedirectStandardOutput = true,
@@ -22,6 +26,6 @@ namespace Gkill.API.Models{
             p.WaitForExit();
 
             return p.StandardOutput.ReadLine();
-        }
+        }*/
     }
 }

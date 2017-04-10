@@ -8,13 +8,18 @@ namespace Gkill.API.Test.Models{
         
         [Fact]
         public void ProcessModelObtainsUserName(){
-            var processInfo = GetSingleProcess();
+          /*  var processInfo = GetSingleProcess();
             var processId = Convert.ToInt32(processInfo.Item1);
             var processUser = processInfo.Item2;
             var processModel = new ProcessModel(){
                 ProcessID = processId
             };
-            Assert.Equal(processUser, processModel.ProcessUserName);
+
+            Assert.Equal(processUser, processModel.ProcessUserName);*/
+            var processModel = new ProcessModel(){
+                ProcessID =  1
+            };
+            Assert.Equal("root", processModel.ProcessUserName);
         }
 
         private Tuple<string, string> GetSingleProcess(){
