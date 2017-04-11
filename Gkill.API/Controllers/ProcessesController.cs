@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Gkill.API.Models;
-using System.Linq;
 
 namespace Gkill.API.Controllers{
 
@@ -10,12 +9,21 @@ namespace Gkill.API.Controllers{
 
         [HttpGet]
         public IEnumerable<ProcessModel> Index(){
-            return Utils.ProccessManager.All()
-            .Select(p => new ProcessModel{
-                ProcessID = p.Id,
-                ProcessName = p.ProcessName,
-                Memory = p.VirtualMemorySize64,
-            });
+            return Utils.ProccessManager.All();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id){
+            int resultStatus = Utils.ProccessManager.KillProcess(id);
+            if(resultStatus == Utils.ProccessManager.PROCESS_TERMINATED){
+                return NoContent();
+            }
+            else if(resultStatus == Utils.ProccessManager.FAILED_TO_TERMINATE){
+                return Forbid();
+            }
+            else{
+                return NotFound();
+            }
         }
     }
 }
