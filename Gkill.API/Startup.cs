@@ -29,6 +29,9 @@ namespace Gkill.API
         {
             // Add framework services.
             services.AddMvc();
+
+            //Enable CORS
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
