@@ -10,11 +10,6 @@ namespace Gkill.API.Test.Utils{
             Assert.NotEmpty(runningProcesses);
         }
         
-        [Fact]
-        public void FailingTest(){
-            Assert.Equal(12, 11);
-        }
-
         [Theory]
         [InlineData(-1)]
         [InlineData(-10)]
